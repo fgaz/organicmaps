@@ -85,7 +85,7 @@ namespace ge0
 {
 string GenerateShortShowMapUrl(double lat, double lon, double zoom, string const & name)
 {
-  string urlPrefix = "ge0://ZCoordba64";
+  string urlPrefix = "om://ZCoordba64";
 
   int const zoomI = (zoom <= 4 ? 0 : (zoom >= 19.75 ? 63 : static_cast<int>((zoom - 4) * 4)));
   urlPrefix[6] = Base64Char(zoomI);

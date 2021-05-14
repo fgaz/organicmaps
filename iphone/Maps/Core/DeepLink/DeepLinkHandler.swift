@@ -56,24 +56,24 @@ class DeepLinkURL {
     return applicationDidReceiveUniversalLink(url, provider: .native)
   }
 
-  func applicationDidReceiveUniversalLink(_ url: URL, provider: DeepLinkProvider) -> Bool {
-    var result = false
-    if let host = url.host, host == "mapsme.onelink.me" {
-      URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
-        if $0.name == "af_dp" {
-          guard let value = $0.value, let dl = URL(string: value) else { return }
-          result = setUniversalLink(dl, provider: provider)
-        }
-      }
-    } else {
-      result = setUniversalLink(url, provider: provider)
-    }
-    if canHandleLink {
-      handleInternal()
-    }
-    return result
-  }
-
+//  func applicationDidReceiveUniversalLink(_ url: URL, provider: DeepLinkProvider) -> Bool {
+//    var result = false
+//    if let host = url.host, host == "mapsme.onelink.me" {
+//      URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
+//        if $0.name == "af_dp" {
+//          guard let value = $0.value, let dl = URL(string: value) else { return }
+//          result = setUniversalLink(dl, provider: provider)
+//        }
+//      }
+//    } else {
+//      result = setUniversalLink(url, provider: provider)
+//    }
+//    if canHandleLink {
+//      handleInternal()
+//    }
+//    return result
+//  }
+//
   func handleDeeplink() {
     canHandleLink = true
     if deeplinkURL != nil {
